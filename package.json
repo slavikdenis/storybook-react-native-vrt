@@ -1,19 +1,19 @@
 {
   "private": true,
   "scripts": {
-    "build": "turbo build",
+    "build": "turbo build --ignore=\"apps/**/*\"",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "clean": "turbo clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo build --filter=docs^... && changeset publish"
+    "release": "turbo build --ignore=\"apps/**/*\" && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
     "eslint": "^8.54.0",
-    "@acme/eslint-config": "*",
+    "@tools/eslint-config": "*",
     "prettier": "^2.8.8",
     "turbo": "latest"
   },
@@ -23,6 +23,7 @@
   "packageManager": "yarn@1.22.19",
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "packages/tools/*"
   ]
 }

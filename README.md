@@ -2,25 +2,15 @@
 
 This is an official React design system starter powered by Turborepo. Versioning and package publishing is handled by [Changesets](https://github.com/changesets/changesets) and fully automated with GitHub Actions.
 
-## Using this example
-
-Run the following command:
-
-```sh
-npx create-turbo@latest -e with-changesets
-```
-
 ## What's inside?
 
 This Turborepo includes the following:
 
 ### Apps and Packages
 
-- `docs`: A placeholder documentation site powered by [Next.js](https://nextjs.org/)
-- `@acme/core`: core React components
-- `@acme/utils`: shared React utilities
-- `@acme/tsconfig`: shared `tsconfig.json`s used throughout the monorepo
-- `@acme/eslint-config`: ESLint preset
+- `react-native-storybook-visual`: core React components
+- `@tools/tsconfig`: shared `tsconfig.json`s used throughout the monorepo
+- `@tools/eslint-config`: ESLint preset
 
 Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
 
@@ -34,19 +24,11 @@ This Turborepo has some additional tools already setup for you:
 
 ### Useful commands
 
-- `yarn build` - Build all packages and the docs site
-- `yarn dev` - Develop all packages and the docs site
+- `yarn build` - Build all packages
+- `yarn dev` - Develop all packages
 - `yarn lint` - Lint all packages
 - `yarn changeset` - Generate a changeset
 - `yarn clean` - Clean up all `node_modules` and `dist` folders (runs each package's clean script)
-
-### Changing the npm organization scope
-
-The npm organization scope for this design system starter is `@acme`. To change this, it's a bit manual at the moment, but you'll need to do the following:
-
-- Rename folders in `packages/*` to replace `acme` with your desired scope
-- Search and replace `acme` with your desired scope
-- Re-run `yarn install`
 
 ## Versioning and Publishing packages
 
