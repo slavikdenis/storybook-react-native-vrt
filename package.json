@@ -7,7 +7,7 @@
     "lint:ts": "turbo lint:ts",
     "test": "turbo test",
     "clean": "turbo clean && rm -rf node_modules",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\"",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "turbo build --ignore=\"apps/**/*\" && changeset publish"
