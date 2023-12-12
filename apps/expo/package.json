@@ -24,7 +24,7 @@
     "react-native-safe-area-context": "4.6.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0",
+    "@babel/core": "^7.23.6",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-controls": "^6.5.16",
     "@storybook/addon-ondevice-actions": "^6.5.7",
@@ -32,7 +32,7 @@
     "@storybook/addons": "^6.5.16",
     "@storybook/react": "^6.5.16",
     "@storybook/react-native": "^6.5.7",
-    "@types/react": "~18.2.14",
+    "@types/react": "~18.2.43",
     "react-native-storybook-visual": "*",
     "typescript": "^5.1.3"
   }
