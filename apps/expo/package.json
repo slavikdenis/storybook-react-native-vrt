@@ -8,6 +8,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "lint:ts": "tsc --noEmit",
     "storybook:visual": "react-native-storybook-visual",
     "storybook:generate": "sb-rn-get-stories --config-path .storybook",
     "storybook:watch": "sb-rn-watcher --config-path .storybook"

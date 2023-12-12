@@ -4,6 +4,8 @@
     "build": "turbo build --ignore=\"apps/**/*\"",
     "dev": "turbo dev",
     "lint": "turbo lint",
+    "lint:ts": "turbo lint:ts",
+    "test": "turbo test",
     "clean": "turbo clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
@@ -12,10 +14,10 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
-    "eslint": "^8.54.0",
     "@tools/eslint-config": "*",
+    "eslint": "^8.54.0",
     "prettier": "^2.8.8",
-    "turbo": "latest"
+    "turbo": "^1.11.1"
   },
   "engines": {
     "node": ">=18"

@@ -1,12 +1,14 @@
 import { View } from 'react-native';
+import type { Story } from '@storybook/react-native';
 
 export const decorators = [
-	(Story) => (
+	(Story: Story) => (
 		<View style={{ padding: 15 }}>
 			<Story />
 		</View>
 	),
 ];
+
 export const parameters = {
 	actions: { argTypesRegex: '^on[A-Z].*' },
 	controls: {
