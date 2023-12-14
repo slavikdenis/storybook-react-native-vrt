@@ -1,6 +1,4 @@
-# Turborepo Design System starter with Changesets
-
-This is an official React design system starter powered by Turborepo. Versioning and package publishing is handled by [Changesets](https://github.com/changesets/changesets) and fully automated with GitHub Actions.
+# Visual Regression Testing for React Native Storybook
 
 ## What's inside?
 
@@ -8,9 +6,10 @@ This Turborepo includes the following:
 
 ### Apps and Packages
 
-- `react-native-storybook-visual`: core React components
+- `react-native-storybook-visual`: CLI tools for visual regression testing with Storybook in React Native/Expo
 - `@tools/tsconfig`: shared `tsconfig.json`s used throughout the monorepo
-- `@tools/eslint-config`: ESLint preset
+- `@tools/eslint-config`: ESLint presets
+- `ui`: React Native UI components & stories for Storybook
 
 Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
 
@@ -27,6 +26,9 @@ This Turborepo has some additional tools already setup for you:
 - `yarn build` - Build all packages
 - `yarn dev` - Develop all packages
 - `yarn lint` - Lint all packages
+- `yarn lint:ts` - Lint all packages with TypeScript
+- `yarn test` - Test all packages
+- `yarn format` - Format all packages
 - `yarn changeset` - Generate a changeset
 - `yarn clean` - Clean up all `node_modules` and `dist` folders (runs each package's clean script)
 
@@ -53,3 +55,8 @@ To publish packages to a private npm organization scope, **remove** the followin
 ### GitHub Package Registry
 
 See [Working with the npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#publishing-a-package-using-publishconfig-in-the-packagejson-file)
+
+### Setup
+
+1. Setup `@storybook/react-native` in your app
+2. Install `@storybook/react-native-server` and create configuration for it. See guide [here](https://storybook.js.org/blog/storybook-for-react-native-6-5/#optional-server-configuration) or check out the examples apps in the `apps` folder
