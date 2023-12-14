@@ -31,7 +31,7 @@
     "@storybook/addon-ondevice-controls": "^6.5.7",
     "@storybook/addons": "^6.5.16",
     "@storybook/react": "^6.5.16",
-    "@storybook/react-native": "^6.5.7",
+    "@storybook/react-native": "patch:@storybook/react-native@npm%3A6.5.7#~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch",
     "@types/react": "~18.2.43",
     "react-native-storybook-visual": "*",
     "typescript": "^5.1.3"
