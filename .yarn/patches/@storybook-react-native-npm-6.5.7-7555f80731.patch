@@ -1,0 +1,13 @@
+diff --git a/scripts/loader.js b/scripts/loader.js
+index 1347c2a2337160b2677067f889a53700498ebee6..c2f12b27e89019d3690e2267cc0b814cf0915381 100644
+--- a/scripts/loader.js
++++ b/scripts/loader.js
+@@ -137,7 +137,7 @@ function writeRequires({ configPath, absolute = false, unstable_useRequireContex
+           const normalizePathForWindows = (str) =>
+             path.sep === '\\' ? str.replace(/\\/g, '/') : str;
+ 
+-          return `"./${normalizePathForWindows(
++          return `"${pathRelativeToCwd.startsWith('.') ? "" : "./"}${normalizePathForWindows(
+             pathRelativeToCwd
+           )}": require("${normalizePathForWindows(requirePath)}")`;
+         });
