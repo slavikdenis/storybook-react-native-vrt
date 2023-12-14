@@ -1,5 +1,16 @@
-import StorybookUIRoot from "./.storybook/index";
+import {
+	SafeAreaProvider,
+	SafeAreaView,
+	initialWindowMetrics,
+} from 'react-native-safe-area-context';
+import StorybookUIRoot from './.storybook/index';
 
 export default function App() {
-  return <StorybookUIRoot />;
+	return (
+		<SafeAreaProvider initialMetrics={initialWindowMetrics}>
+			<SafeAreaView style={{ flex: 1 }}>
+				<StorybookUIRoot />
+			</SafeAreaView>
+		</SafeAreaProvider>
+	);
 }

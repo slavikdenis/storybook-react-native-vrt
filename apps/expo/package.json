@@ -9,6 +9,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint:ts": "tsc --noEmit",
+    "storybook:server": "react-native-storybook-server",
     "storybook:visual": "react-native-storybook-visual",
     "storybook:generate": "sb-rn-get-stories --config-path .storybook",
     "storybook:watch": "sb-rn-watcher --config-path .storybook"
@@ -27,11 +28,13 @@
     "@babel/core": "^7.23.6",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-controls": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addon-ondevice-actions": "^6.5.7",
     "@storybook/addon-ondevice-controls": "^6.5.7",
     "@storybook/addons": "^6.5.16",
     "@storybook/react": "^6.5.16",
     "@storybook/react-native": "patch:@storybook/react-native@npm%3A6.5.7#~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch",
+    "@storybook/react-native-server": "^6.5.7",
     "@types/react": "~18.2.43",
     "react-native-storybook-visual": "*",
     "typescript": "^5.1.3"

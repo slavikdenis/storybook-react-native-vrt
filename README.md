@@ -59,4 +59,4 @@ See [Working with the npm registry](https://docs.github.com/en/packages/working-
 ### Setup
 
 1. Setup `@storybook/react-native` in your app
-2. Install `@storybook/react-native-server` and create configuration for it. See guide [here](https://storybook.js.org/blog/storybook-for-react-native-6-5/#optional-server-configuration) or check out the examples apps in the `apps` folder
+2. Install `@storybook/react-native-server` and create configuration for it. See guide [here](https://storybook.js.org/blog/storybook-for-react-native-6-5/#optional-server-configuration) and [here](https://dev.to/dannyhw/quick-guide-for-storybookreact-native-server-v6-4nl2) or check out the examples apps in the `apps` folder
