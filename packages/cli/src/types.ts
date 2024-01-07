@@ -1,3 +1,3 @@
-export type Platforms = 'ios' | 'android';
+export type Platforms = "ios" | "android";
 
-export type ScreenShotType = 'current' | 'base';
+export type ScreenShotType = "current" | "base";

@@ -1,16 +1,16 @@
-import { readdir } from 'node:fs/promises';
-import { pathExists, ensureDir, outputFile } from 'fs-extra';
-import type { Platforms, ScreenShotType } from './types';
-import { SCREENSHOTS_DIRS, SCREENSHOT_FORMAT } from './config';
+import { readdir } from "node:fs/promises";
+import { pathExists, ensureDir, outputFile } from "fs-extra";
+import type { Platforms, ScreenShotType } from "./types";
+import { SCREENSHOTS_DIRS, SCREENSHOT_FORMAT } from "./config";
 
 export const ensureRelativePathHasDot = (relativePath: string) =>
-  relativePath.startsWith('.') ? relativePath : `./${relativePath}`;
+  relativePath.startsWith(".") ? relativePath : `./${relativePath}`;
 
-export const getScreenshotDir = (type: ScreenShotType | 'diff') =>
+export const getScreenshotDir = (type: ScreenShotType | "diff") =>
   SCREENSHOTS_DIRS?.[type] ?? undefined;
 
 type GetScreenShotPathOptions = {
-  type: ScreenShotType | 'diff';
+  type: ScreenShotType | "diff";
   platform: Platforms;
   name: string;
 };
@@ -55,7 +55,7 @@ export const createDir = async (path: string) => {
 
 export const createFile = async (path: string, content: string) => {
   try {
-    await outputFile(path, content, { encoding: 'utf-8' });
+    await outputFile(path, content, { encoding: "utf-8" });
     return true;
   } catch (error) {
     console.error("Could't create file: ", path, error);

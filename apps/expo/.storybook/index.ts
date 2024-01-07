@@ -3,7 +3,7 @@ import "./doctools";
 import "./storybook.requires";
 
 const StorybookUIRoot = getStorybookUI({
-	enableWebsockets: true,
+  enableWebsockets: true,
   onDeviceUI: false,
   port: 7007,
 });

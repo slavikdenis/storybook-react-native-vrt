@@ -1,12 +1,12 @@
-import path from 'node:path';
-import { readFileSync } from 'node:fs';
-import * as glob from 'glob';
+import path from "node:path";
+import { readFileSync } from "node:fs";
+import * as glob from "glob";
 // @ts-expect-error FIXME
-import { getMain } from '@storybook/react-native/scripts/loader.js';
-import { normalizeStories } from '@storybook/core-common';
-import * as csfTools from '@storybook/csf-tools';
-import { ensureRelativePathHasDot } from './fs';
-import { die, info, warn } from './console';
+import { getMain } from "@storybook/react-native/scripts/loader.js";
+import { normalizeStories } from "@storybook/core-common";
+import * as csfTools from "@storybook/csf-tools";
+import { ensureRelativePathHasDot } from "./fs";
+import { die, info, warn } from "./console";
 
 type Config = {
   configPath: string;
@@ -34,7 +34,7 @@ export const getCFSStories = ({
 
   if (hasCustomPaths) {
     // Warn user when using custom paths
-    warn('🟠 Using custom paths:');
+    warn("🟠 Using custom paths:");
     customPaths?.forEach((path) => {
       info(`${path}`);
     });
@@ -62,7 +62,7 @@ export const getCFSStories = ({
         cwd: path.resolve(process.cwd(), specifier.directory),
         absolute: isAbsolutePaths,
         // default to always ignore (exclude) anything in node_modules
-        ignore: ['**/node_modules'],
+        ignore: ["**/node_modules"],
       })
       .map((storyPath) => {
         const pathWithDirectory = path.join(specifier.directory, storyPath);
@@ -73,7 +73,7 @@ export const getCFSStories = ({
             );
 
         const normalizePathForWindows = (str: string) =>
-          path.sep === '\\' ? str.replace(/\\/g, '/') : str;
+          path.sep === "\\" ? str.replace(/\\/g, "/") : str;
 
         return normalizePathForWindows(requirePath);
       });
@@ -90,7 +90,7 @@ export const getCFSStories = ({
    * CSF Stories
    */
   const csfStories = storyPaths.map((storyPath) => {
-    const code = readFileSync(storyPath, { encoding: 'utf-8' }).toString();
+    const code = readFileSync(storyPath, { encoding: "utf-8" }).toString();
 
     return csfTools
       .loadCsf(code, {

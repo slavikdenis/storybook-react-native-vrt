@@ -1,9 +1,9 @@
-import { readdir } from 'node:fs/promises';
-import { move, remove } from 'fs-extra';
-import { SCREENSHOTS_DIRS, SCREENSHOT_FORMAT } from '../config';
-import { die, info, success } from '../console';
-import { Platforms } from '../types';
-import { getEmojiForPlatform } from '../utils';
+import { readdir } from "node:fs/promises";
+import { move, remove } from "fs-extra";
+import { SCREENSHOTS_DIRS, SCREENSHOT_FORMAT } from "../config";
+import { die, info, success } from "../console";
+import { Platforms } from "../types";
+import { getEmojiForPlatform } from "../utils";
 
 const filterScreenshotFile = (file: string, platform: Platforms) =>
   file.startsWith(`${platform}-`) && file.endsWith(`.${SCREENSHOT_FORMAT}`);
@@ -31,7 +31,7 @@ export const update = async (platforms: Platforms[]) => {
         `🔴${getEmojiForPlatform(
           platform,
         )} Failed to remove old base screenshots for ${platform}`,
-        'message' in error ? error.message : JSON.stringify(error),
+        "message" in error ? error.message : JSON.stringify(error),
       );
 
       process.exit(1);
@@ -56,7 +56,7 @@ export const update = async (platforms: Platforms[]) => {
         `🔴${getEmojiForPlatform(
           platform,
         )} Failed to move base screenshots for ${platform}`,
-        'message' in error ? error.message : JSON.stringify(error),
+        "message" in error ? error.message : JSON.stringify(error),
       );
 
       process.exit(1);

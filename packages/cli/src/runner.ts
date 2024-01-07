@@ -1,14 +1,14 @@
-import { EventEmitter } from 'node:events';
-import { addons, Channel } from '@storybook/addons';
-import createChannel from '@storybook/channel-websocket';
-import Events from '@storybook/core-events';
-import { retryAsync } from 'ts-retry';
-import { die } from './console';
-import { getCFSStories } from './stories';
-import { Platforms } from './types';
-import { compareScreenshots, takeScreenshot } from './screenshot';
-import { COMMANDS } from './cli';
-import { getScreenshotPath, isFileExists } from './fs';
+import { EventEmitter } from "node:events";
+import { addons, Channel } from "@storybook/addons";
+import createChannel from "@storybook/channel-websocket";
+import Events from "@storybook/core-events";
+import { retryAsync } from "ts-retry";
+import { die } from "./console";
+import { getCFSStories } from "./stories";
+import { Platforms } from "./types";
+import { compareScreenshots, takeScreenshot } from "./screenshot";
+import { COMMANDS } from "./cli";
+import { getScreenshotPath, isFileExists } from "./fs";
 
 type Modes = (typeof COMMANDS)[keyof typeof COMMANDS];
 
@@ -25,7 +25,7 @@ type Options = {
   exitOnError?: boolean;
 };
 
-type StoryState = 'IDLE' | 'RENDERED' | 'SHOTS_CAPTURED';
+type StoryState = "IDLE" | "RENDERED" | "SHOTS_CAPTURED";
 
 type CurrentStory = {
   id: string;
@@ -34,12 +34,12 @@ type CurrentStory = {
 };
 
 export const RunnerEvents = {
-  CREATING_CHANNEL: 'CREATING_CHANNEL',
-  CHANNEL_CREATED: 'CHANNEL_CREATED',
-  RENDERED_STORY: 'RENDERED_STORY',
-  TAKING_SHOTS: 'TAKING_SHOTS',
-  STORY_PROCESSED: 'STORY_PROCESSED',
-  FINISHED: 'FINISHED',
+  CREATING_CHANNEL: "CREATING_CHANNEL",
+  CHANNEL_CREATED: "CHANNEL_CREATED",
+  RENDERED_STORY: "RENDERED_STORY",
+  TAKING_SHOTS: "TAKING_SHOTS",
+  STORY_PROCESSED: "STORY_PROCESSED",
+  FINISHED: "FINISHED",
 } as const;
 
 type TestResult = {
@@ -50,7 +50,7 @@ type TestResult = {
 };
 
 export class TestRunner extends EventEmitter {
-  private storyQueue: Array<CurrentStory['id']> = [];
+  private storyQueue: Array<CurrentStory["id"]> = [];
   private currentStory: CurrentStory | null = null;
   // private eventEmitter = new EventEmitter();
   private channel?: Channel;
@@ -60,7 +60,7 @@ export class TestRunner extends EventEmitter {
   constructor(opts: Options) {
     super();
     if (opts.mode === COMMANDS.UPDATE) {
-      console.error('Update mode is not supported yet!');
+      console.error("Update mode is not supported yet!");
       return;
     }
 
@@ -85,11 +85,11 @@ export class TestRunner extends EventEmitter {
     const channel = createChannel({
       url: this.settings.url,
       onError: (error) => {
-        if ('message' in error && error.message) {
+        if ("message" in error && error.message) {
           // @ts-expect-error FIXME
-          die('🔴 WebSocket connection failed', error.message);
+          die("🔴 WebSocket connection failed", error.message);
         } else {
-          die('🔴 Failed creating error', JSON.stringify(error));
+          die("🔴 Failed creating error", JSON.stringify(error));
         }
 
         process.exit(1);
@@ -123,7 +123,7 @@ export class TestRunner extends EventEmitter {
     channel.on(Events.STORY_RENDERED, (id) => {
       if (!this.currentStory) {
         // Error: no current story
-        console.error('[channel.on] STORY_RENDERED => No current story!');
+        console.error("[channel.on] STORY_RENDERED => No current story!");
         return;
       }
 
@@ -132,7 +132,7 @@ export class TestRunner extends EventEmitter {
       if (story.id !== id) {
         // Error: not current story
         console.error(
-          '[channel.on] STORY_RENDERED => Rendered story is not current story!',
+          "[channel.on] STORY_RENDERED => Rendered story is not current story!",
         );
         return;
       }
@@ -150,7 +150,7 @@ export class TestRunner extends EventEmitter {
         // Ok: all renders finished
         this.currentStory = {
           ...story,
-          state: 'RENDERED',
+          state: "RENDERED",
         };
         this.emitChange(RunnerEvents.RENDERED_STORY, id);
       }
@@ -176,7 +176,7 @@ export class TestRunner extends EventEmitter {
     // Set current story
     this.currentStory = {
       id: storyId,
-      state: 'IDLE',
+      state: "IDLE",
       timeRendered: 0,
     };
 
@@ -191,7 +191,7 @@ export class TestRunner extends EventEmitter {
     const story = this.currentStory;
 
     if (!story) {
-      console.error('[makeScreenshots] No story');
+      console.error("[makeScreenshots] No story");
       return;
     }
 
@@ -200,7 +200,7 @@ export class TestRunner extends EventEmitter {
       const screenshotInfo = {
         name: story.id,
         platform: platform,
-        dest: this.settings.mode === COMMANDS.INIT ? 'base' : 'current',
+        dest: this.settings.mode === COMMANDS.INIT ? "base" : "current",
       } as const;
 
       // Take screenshots
@@ -253,7 +253,7 @@ export class TestRunner extends EventEmitter {
 
     this.currentStory = {
       ...story,
-      state: 'SHOTS_CAPTURED',
+      state: "SHOTS_CAPTURED",
     };
 
     this.emitChange(RunnerEvents.STORY_PROCESSED, story.id);

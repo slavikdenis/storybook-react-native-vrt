@@ -1,5 +1,5 @@
-import 'websocket-polyfill';
-import { main } from './main';
+import "websocket-polyfill";
+import { main } from "./main";
 
 // TODO:
 // cli

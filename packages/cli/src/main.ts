@@ -1,31 +1,31 @@
-import { emptyDir } from 'fs-extra';
-import { die, info, success, warn } from './console';
-import { getEmojiForPlatform } from './utils';
+import { emptyDir } from "fs-extra";
+import { die, info, success, warn } from "./console";
+import { getEmojiForPlatform } from "./utils";
 import {
   TOOL_CONFIG_DIR,
   SCREENSHOTS_DIRS,
   SERVER_DEFAULTS,
   STORYBOOK_CONFIG_PATH,
-} from './config';
-import type { Platforms } from './types';
-import { COMMANDS, getCliOptions, sayHi } from './cli';
+} from "./config";
+import type { Platforms } from "./types";
+import { COMMANDS, getCliOptions, sayHi } from "./cli";
 import {
   reverseAdbPort,
   shutdownAndroidEmulator,
   shutdownBootedIosDevices,
-} from './devices';
+} from "./devices";
 import {
   createDir,
   createFile,
   getScreenshotDir,
   isDirEmpty,
   isFileExists,
-} from './fs';
-import { update } from './commands/update';
-import { TestRunner } from './runner';
+} from "./fs";
+import { update } from "./commands/update";
+import { TestRunner } from "./runner";
 
 export const main = async () => {
-  console.time('Script run time');
+  console.time("Script run time");
 
   // Say hi
   await sayHi();
@@ -47,7 +47,7 @@ export const main = async () => {
 
   if (!doesGitignoreExits) {
     info(`🟠 Creating ${TOOL_CONFIG_DIR}/.gitignore`);
-    await createFile(`${TOOL_CONFIG_DIR}/.gitignore`, '.diff\n.current\n');
+    await createFile(`${TOOL_CONFIG_DIR}/.gitignore`, ".diff\n.current\n");
   }
 
   /**
@@ -112,23 +112,23 @@ export const main = async () => {
    * Side effects
    */
   // Run Android only side effects
-  if (platforms.includes('android')) {
+  if (platforms.includes("android")) {
     // Check if "adb" is installed
     warn(
-      `${getEmojiForPlatform('android')} Reversing adb port ${
+      `${getEmojiForPlatform("android")} Reversing adb port ${
         SERVER_DEFAULTS.port
       }`,
     );
     await reverseAdbPort(SERVER_DEFAULTS.port);
   }
 
-  if (platforms.length === 1 && platforms[0] === 'android') {
+  if (platforms.length === 1 && platforms[0] === "android") {
     // Shutdown iOS simulators
     await shutdownBootedIosDevices();
   }
 
   // Run iOS only side effects
-  if (platforms.length === 1 && platforms[0] === 'ios') {
+  if (platforms.length === 1 && platforms[0] === "ios") {
     // Shutdown Android emulator
     await shutdownAndroidEmulator();
   }
@@ -157,15 +157,15 @@ export const main = async () => {
   });
 
   // Listeners
-  runner.on('CHANNEL_CREATED', () => {
+  runner.on("CHANNEL_CREATED", () => {
     info(`🟢 Storybook channel created`);
     runner.startProcessing();
   });
 
-  runner.on('FINISHED', (results: Results) => {
+  runner.on("FINISHED", (results: Results) => {
     if (command === COMMANDS.INIT) {
       success(`🟢 Base screenshots generated`);
-      info(`See screenshots at ${getScreenshotDir('base')}`);
+      info(`See screenshots at ${getScreenshotDir("base")}`);
       process.exit(0);
     }
 
@@ -181,7 +181,7 @@ export const main = async () => {
       }
     });
 
-    console.timeEnd('Script run time');
+    console.timeEnd("Script run time");
 
     runner.removeListeners();
 
