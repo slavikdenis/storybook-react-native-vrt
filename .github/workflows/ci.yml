@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          # check out full history
+          fetch-depth: 0
 
       - name: Setup Node.js 18.x
         uses: actions/setup-node@v3
@@ -52,4 +55,4 @@ jobs:
 
       # Make sure a changeset has been created
       - name: Check for changesets
-        run: npx changeset status --since=main
+        run: npx changeset status --since=origin/main
