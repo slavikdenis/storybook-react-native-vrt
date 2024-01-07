@@ -1,5 +1,6 @@
 // Learn more https://docs.expo.io/guides/customizing-metro
 const { getDefaultConfig } = require("@react-native/metro-config");
+const exclusionList = require("metro-config/src/defaults/exclusionList");
 const path = require("path");
 
 // Find the project and workspace directories
@@ -27,5 +28,8 @@ config.resolver.nodeModulesPaths = [
 // 3. Add the `sbmodern` to use the modern version of Storybook packages
 // https://github.com/storybookjs/react-native#additional-steps-update-your-metro-config
 config.resolver.resolverMainFields.unshift("sbmodern");
+
+// 4. Ignore visual test files
+config.resolver.blockList = exclusionList([/\.storybook-visual\/.*/]);
 
 module.exports = config;
