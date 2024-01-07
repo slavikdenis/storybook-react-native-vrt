@@ -12,12 +12,12 @@ import {
   StyleSheet,
   useColorScheme,
   Text,
+  LogBox,
 } from "react-native";
 
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
 import StorybookUIRoot from "./.storybook";
-import { LogBox } from "react-native";
 
 // For testing purposes
 const IS_STORYBOOK_TESTING = true;
