@@ -59,13 +59,19 @@ For more information about this automation, refer to the official [changesets do
 
 ## Roadmap
 
-- [ ] CI support
-- [ ] Configurable options / Configuration file (devices, etc.)
+- Configurable options / Configuration file
+	- [ ] Device list
+	- [ ] Storybook folder path
+	- [ ] Storybook Server configuration (host, port, secure, etc.)
+	- [ ] Tests folder path
+	- [ ] React Native / Expo packager port
+	- [ ] [`looks-same` configuration](https://github.com/gemini-testing/looks-same?tab=readme-ov-file#building-diff-image)
 - [ ] Watch mode
 - [ ] Disable hot reload on startup
 - [ ] Manage Expo/React Native apps (create, run, etc.)
 - [ ] Caching tests
 - [ ] Support light/dark variants
+- [ ] CI support
 
 ## Inspiration
 
