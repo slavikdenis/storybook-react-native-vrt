@@ -1,5 +1,6 @@
 // Learn more https://docs.expo.io/guides/customizing-metro
 const { getDefaultConfig } = require("expo/metro-config");
+const exclusionList = require("metro-config/src/defaults/exclusionList");
 const path = require("path");
 
 // Find the project and workspace directories
@@ -24,5 +25,8 @@ config.resolver.disableHierarchicalLookup = true;
 
 // 4. Add the `sbmodern` to use the modern version of Storybook packages
 config.resolver.resolverMainFields.unshift("sbmodern");
+
+// 5. Ignore visual test files
+config.resolver.blockList = exclusionList([/\.storybook-visual\/.*/]);
 
 module.exports = config;
