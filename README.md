@@ -2,6 +2,8 @@
 
 The `react-native-storybook-visual` is a CLI tool for visual regression testing with Storybook in React Native/Expo for local development.
 
+![Showcase GIF](demo/showcase.gif)
+
 ## Commands
 
 - `react-native-storybook-visual init`: Initialize visual regression testing in your app (generates folder structure, _.gitignore_ file and generates base screenshots)
@@ -64,3 +66,8 @@ For more information about this automation, refer to the official [changesets do
 - [ ] Manage Expo/React Native apps (create, run, etc.)
 - [ ] Caching tests
 - [ ] Support light/dark variants
+
+## Inspiration
+
+- [Creating Design Systems in React Native - Marek Fořt | React Native EU 2023](https://www.youtube.com/watch?v=jKhLWl1MX5s)
+- [Daniel Williams' example of VRT on Storybook](https://twitter.com/Danny_H_W/status/1662835533217669121)
