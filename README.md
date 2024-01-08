@@ -1,27 +1,42 @@
-# Visual Regression Testing for React Native Storybook
+# Visual Regression Testing for React Native/Expo and Storybook
+
+The `react-native-storybook-visual` is a CLI tool for visual regression testing with Storybook in React Native/Expo for local development.
+
+## Commands
+
+- `react-native-storybook-visual init`: Initialize visual regression testing in your app (generates folder structure, _.gitignore_ file and generates base screenshots)
+- `react-native-storybook-visual test`: Run visual regression tests against base screenshots
+- `react-native-storybook-visual update`: Update base screenshots with current screenshots
+
+For more information, run `react-native-storybook-visual --help`.
+
+## Setup
+
+1. Setup `@storybook/react-native` in your app
+1. Install `@storybook/react-native-server` and create configuration for it. See guide [here](https://storybook.js.org/blog/storybook-for-react-native-6-5/#optional-server-configuration) and [here](https://dev.to/dannyhw/quick-guide-for-storybookreact-native-server-v6-4nl2) or check out the examples apps in the `apps` folder
+1. Install `react-native-storybook-visual` in your app
+1. Generate stories via `sb-rn-get-stories`
+1. Start up your app with Storybook
+1. Start up storybook server via `react-native-storybook-server` in your app
+1. Run `react-native-storybook-visual init` to initialize visual regression testing in your app
 
 ## What's inside?
 
 This Turborepo includes the following:
 
-### Apps and Packages
+### Packages
 
 - `react-native-storybook-visual`: CLI tools for visual regression testing with Storybook in React Native/Expo
 - `@tools/tsconfig`: shared `tsconfig.json`s used throughout the monorepo
 - `@tools/eslint-config`: ESLint presets
-- `ui`: React Native UI components & stories for Storybook
+- `@local/ui`: React Native UI components & stories for Storybook
 
-Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
+### Apps
 
-### Utilities
+- `@apps/bare`: Bare React Native app with Storybook and visual regression testing setup
+- `@apps/expo`: Expo app with Storybook and visual regression testing setup
 
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Useful commands
+### Useful commands in the repo root
 
 - `yarn build` - Build all packages
 - `yarn dev` - Develop all packages
@@ -40,23 +55,12 @@ This example comes with automated npm releases setup in a [GitHub Action](https:
 
 For more information about this automation, refer to the official [changesets documentation](https://github.com/changesets/changesets/blob/main/docs/automating-changesets.md)
 
-### npm
+## Roadmap
 
-If you want to publish package to the public npm registry and make them publicly available, this is already setup.
-
-To publish packages to a private npm organization scope, **remove** the following from each of the `package.json`'s
-
-```diff
-- "publishConfig": {
--  "access": "public"
-- },
-```
-
-### GitHub Package Registry
-
-See [Working with the npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#publishing-a-package-using-publishconfig-in-the-packagejson-file)
-
-### Setup
-
-1. Setup `@storybook/react-native` in your app
-2. Install `@storybook/react-native-server` and create configuration for it. See guide [here](https://storybook.js.org/blog/storybook-for-react-native-6-5/#optional-server-configuration) and [here](https://dev.to/dannyhw/quick-guide-for-storybookreact-native-server-v6-4nl2) or check out the examples apps in the `apps` folder
+- [ ] CI support
+- [ ] Configurable options / Configuration file (devices, etc.)
+- [ ] Watch mode
+- [ ] Disable hot reload on startup
+- [ ] Manage Expo/React Native apps (create, run, etc.)
+- [ ] Caching tests
+- [ ] Support light/dark variants
