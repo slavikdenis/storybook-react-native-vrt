@@ -9,6 +9,7 @@ import { Platforms } from "./types";
 import { compareScreenshots, takeScreenshot } from "./screenshot";
 import { COMMANDS } from "./cli";
 import { getScreenshotPath, isFileExists } from "./fs";
+import { delay } from "./utils";
 
 type Modes = (typeof COMMANDS)[keyof typeof COMMANDS];
 
@@ -30,7 +31,6 @@ type StoryState = "IDLE" | "RENDERED" | "SHOTS_CAPTURED";
 type CurrentStory = {
   id: string;
   state: StoryState;
-  timeRendered: number;
 };
 
 export const RunnerEvents = {
@@ -59,6 +59,11 @@ export class TestRunner extends EventEmitter {
 
   constructor(opts: Options) {
     super();
+    this.processStory = this.processStory.bind(this);
+    this.makeScreenshots = this.makeScreenshots.bind(this);
+    this.startProcessing = this.startProcessing.bind(this);
+    this.start = this.start.bind(this);    
+
     if (opts.mode === COMMANDS.UPDATE) {
       console.error("Update mode is not supported yet!");
       return;
@@ -119,42 +124,8 @@ export class TestRunner extends EventEmitter {
 
     this.storyQueue = [...storyIds];
 
-    // Channel event listeners
-    channel.on(Events.STORY_RENDERED, (id) => {
-      if (!this.currentStory) {
-        // Error: no current story
-        console.error("[channel.on] STORY_RENDERED => No current story!");
-        return;
-      }
-
-      let story: CurrentStory = this.currentStory;
-
-      if (story.id !== id) {
-        // Error: not current story
-        console.error(
-          "[channel.on] STORY_RENDERED => Rendered story is not current story!",
-        );
-        return;
-      }
-
-      // Update render count
-      story = {
-        ...story,
-        timeRendered: story.timeRendered + 1,
-      };
-
-      if (story.timeRendered < this.settings.platforms.length) {
-        // Ok: waiting for other renders
-        this.currentStory = { ...story };
-      } else {
-        // Ok: all renders finished
-        this.currentStory = {
-          ...story,
-          state: "RENDERED",
-        };
-        this.emitChange(RunnerEvents.RENDERED_STORY, id);
-      }
-    });
+    // Preload all stories
+    this.channel?.emit(Events.PRELOAD_STORIES, storyIds);
 
     // Save channel
     this.channel = channel;
@@ -163,7 +134,7 @@ export class TestRunner extends EventEmitter {
     this.emitChange(RunnerEvents.CHANNEL_CREATED);
   }
 
-  private processStory() {
+  private async processStory() {
     // Pop story from queue
     const storyId = this.storyQueue.pop();
 
@@ -177,12 +148,22 @@ export class TestRunner extends EventEmitter {
     this.currentStory = {
       id: storyId,
       state: "IDLE",
-      timeRendered: 0,
     };
 
     // Emit story & force remount
-    this.channel?.emit(Events.FORCE_REMOUNT, { storyId });
+    // this.channel?.emit(Events.FORCE_REMOUNT, { storyId });
     this.channel?.emit(Events.SET_CURRENT_STORY, { storyId });
+
+    await delay(1000);
+
+    // Ok: all renders finished
+    this.currentStory = {
+      ...this.currentStory,
+      state: "RENDERED",
+    };
+
+    this.emitChange(RunnerEvents.RENDERED_STORY, this.currentStory.id);
+
   }
 
   private async makeScreenshots() {
