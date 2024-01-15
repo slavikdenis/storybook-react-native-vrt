@@ -1,4 +1,4 @@
-import type { Platforms } from "./types";
+import type { Platforms } from "../types";
 
 /**
  * Configurations

@@ -11,4 +11,4 @@ export const getEmojiForPlatform = (platform: Platforms | undefined) => {
   }
 };
 
-export const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+export const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));

@@ -1,6 +1,6 @@
 import { readdir } from "node:fs/promises";
 import { move, remove } from "fs-extra";
-import { SCREENSHOTS_DIRS, SCREENSHOT_FORMAT } from "../config";
+import { SCREENSHOTS_DIRS, SCREENSHOT_FORMAT } from "../config/defaults";
 import { die, info, success } from "../console";
 import { Platforms } from "../types";
 import { getEmojiForPlatform } from "../utils";

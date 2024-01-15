@@ -4,7 +4,7 @@ import figlet from "figlet";
 import { red } from "colorette";
 import type { Platforms } from "./types";
 import { getEmojiForPlatform } from "./utils";
-import { SUPPORTED_PLATFORMS } from "./config";
+import { SUPPORTED_PLATFORMS } from "./config/defaults";
 import { warn } from "./console";
 
 export const sayHi = async () =>

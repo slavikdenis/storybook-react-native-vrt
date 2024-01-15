@@ -62,7 +62,7 @@ export class TestRunner extends EventEmitter {
     this.processStory = this.processStory.bind(this);
     this.makeScreenshots = this.makeScreenshots.bind(this);
     this.startProcessing = this.startProcessing.bind(this);
-    this.start = this.start.bind(this);    
+    this.start = this.start.bind(this);
 
     if (opts.mode === COMMANDS.UPDATE) {
       console.error("Update mode is not supported yet!");
@@ -163,7 +163,6 @@ export class TestRunner extends EventEmitter {
     };
 
     this.emitChange(RunnerEvents.RENDERED_STORY, this.currentStory.id);
-
   }
 
   private async makeScreenshots() {

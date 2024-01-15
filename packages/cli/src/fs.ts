@@ -1,7 +1,7 @@
 import { readdir } from "node:fs/promises";
 import { pathExists, ensureDir, outputFile } from "fs-extra";
 import type { Platforms, ScreenShotType } from "./types";
-import { SCREENSHOTS_DIRS, SCREENSHOT_FORMAT } from "./config";
+import { SCREENSHOTS_DIRS, SCREENSHOT_FORMAT } from "./config/defaults";
 
 export const ensureRelativePathHasDot = (relativePath: string) =>
   relativePath.startsWith(".") ? relativePath : `./${relativePath}`;

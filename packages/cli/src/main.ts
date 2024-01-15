@@ -6,14 +6,10 @@ import {
   SCREENSHOTS_DIRS,
   SERVER_DEFAULTS,
   STORYBOOK_CONFIG_PATH,
-} from "./config";
+} from "./config/defaults";
 import type { Platforms } from "./types";
 import { COMMANDS, getCliOptions, sayHi } from "./cli";
-import {
-  reverseAdbPort,
-  shutdownAndroidEmulator,
-  shutdownBootedIosDevices,
-} from "./devices";
+import { reverseAdbPort, shutdownAndroidEmulator } from "./devices/android";
 import {
   createDir,
   createFile,
@@ -23,6 +19,7 @@ import {
 } from "./fs";
 import { update } from "./commands/update";
 import { TestRunner } from "./runner";
+import { shutdownBootedIosDevices } from "./devices/ios";
 
 export const main = async () => {
   console.time("Script run time");
