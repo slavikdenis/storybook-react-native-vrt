@@ -16,11 +16,11 @@ const project = resolve(process.cwd(), "tsconfig.json");
 module.exports = {
   extends: [
     "eslint:recommended",
-    "prettier",
+    "plugin:prettier/recommended",
     "eslint-config-turbo",
-    "@react-native-community",
+    "@react-native",
   ],
-  plugins: ["only-warn"],
+  plugins: ["only-warn", "jest"],
   settings: {
     "import/resolver": {
       typescript: {

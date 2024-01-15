@@ -13,14 +13,14 @@
   },
   "devDependencies": {
     "@tools/tsconfig": "*",
-    "@types/react": "^18.2.43",
-    "@types/react-native": "^0.72.8",
+    "@types/react": "^18.2.48",
+    "@types/react-native": "^0.73.0",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3"
   },
   "dependencies": {
     "@storybook/react-native": "patch:@storybook/react-native@npm%3A6.5.7#~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch",
     "react": "18.2.0",
-    "react-native": "^0.73.0"
+    "react-native": "^0.73.2"
   }
 }

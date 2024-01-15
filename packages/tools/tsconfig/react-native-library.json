@@ -1,7 +1,7 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"display": "React Native Library",
-	"extends": ["./base.json", "@tsconfig/react-native/tsconfig.json"],
+	"extends": ["./base.json", "@react-native/typescript-config/tsconfig.json"],
 	"compilerOptions": {
 		"allowJs": true,
 		"jsx": "react",

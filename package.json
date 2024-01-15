@@ -13,10 +13,10 @@
     "release": "turbo build --ignore=\"apps/**/*\" && changeset publish"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.26.2",
+    "@changesets/cli": "^2.27.1",
     "@tools/eslint-config": "*",
-    "eslint": "^8.54.0",
-    "prettier": "^3.1.1",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.2",
     "turbo": "^1.11.3"
   },
   "engines": {
@@ -27,8 +27,5 @@
     "apps/*",
     "packages/*",
     "packages/tools/*"
-  ],
-  "resolutions": {
-    "eslint-plugin-prettier": "^5.0.0"
-  }
+  ]
 }

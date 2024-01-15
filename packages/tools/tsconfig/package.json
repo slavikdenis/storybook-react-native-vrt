@@ -5,5 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "@tsconfig/react-native": "^3.0.2"
+  },
+  "devDependencies": {
+    "@react-native/typescript-config": "^0.74.0"
   }
 }
