@@ -1,2 +1,6 @@
+.github
+.yarn
+node_modules
 apps/bare/vendor
 apps/bare/ios
+apps/bare/android/app/build
