@@ -4,7 +4,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@tsconfig/react-native": "^3.0.2"
+    "@tsconfig/react-native": "^3.0.3"
   },
   "devDependencies": {
     "@react-native/typescript-config": "^0.74.0"

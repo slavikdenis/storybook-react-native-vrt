@@ -20,6 +20,7 @@ import {
 import { update } from "./commands/update";
 import { TestRunner } from "./runner";
 import { shutdownBootedIosDevices } from "./devices/ios";
+import { getConfig } from "./config/getConfig";
 
 export const main = async () => {
   console.time("Script run time");
@@ -46,6 +47,12 @@ export const main = async () => {
     info(`🟠 Creating ${TOOL_CONFIG_DIR}/.gitignore`);
     await createFile(`${TOOL_CONFIG_DIR}/.gitignore`, ".diff\n.current\n");
   }
+
+  /**
+   * Config file
+   */
+  const config = await getConfig();
+  // console.log("config", config);
 
   /**
    * Create screenshots directories

@@ -16,7 +16,7 @@
     "@changesets/cli": "^2.27.1",
     "@tools/eslint-config": "*",
     "eslint": "^8.56.0",
-    "prettier": "^3.2.2",
+    "prettier": "^3.2.4",
     "turbo": "^1.11.3"
   },
   "engines": {

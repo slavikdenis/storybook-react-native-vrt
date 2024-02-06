@@ -26,6 +26,7 @@
     "@storybook/csf-tools": "^6.5.16",
     "@storybook/react-native": "^6.5.7",
     "colorette": "^2.0.20",
+    "cosmiconfig": "^9.0.0",
     "execa": "^8.0.1",
     "figlet": "^1.7.0",
     "fs-extra": "^11.2.0",
@@ -40,7 +41,7 @@
     "@tools/tsconfig": "*",
     "@types/figlet": "^1.5.8",
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^20.11.2",
+    "@types/node": "^20.11.5",
     "@types/yargs": "^17.0.32",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3"

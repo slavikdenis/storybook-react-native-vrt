@@ -36,7 +36,7 @@
     "@storybook/addons": "^6.5.16",
     "@storybook/react": "^6.5.16",
     "@storybook/react-native": "patch:@storybook/react-native@npm%3A6.5.7#~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch",
-    "@storybook/react-native-server": "^6.5.7",
+    "@storybook/react-native-server": "^6.5.8",
     "@types/react": "^18.2.48",
     "@types/react-test-renderer": "^18.0.7",
     "babel-jest": "^29.7.0",
