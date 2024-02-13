@@ -9,7 +9,6 @@ import { Platforms } from "./types";
 import { compareScreenshots, takeScreenshot } from "./screenshot";
 import { COMMANDS } from "./cli";
 import { getScreenshotPath, isFileExists } from "./fs";
-import { delay } from "./utils";
 
 type Modes = (typeof COMMANDS)[keyof typeof COMMANDS];
 
@@ -56,13 +55,14 @@ export class TestRunner extends EventEmitter {
   private channel?: Channel;
   private results: TestResult[] = [];
   private readonly settings: Options = {} as Options;
+  private storyChangedTimeoutId: NodeJS.Timeout | undefined;
 
   constructor(opts: Options) {
     super();
     this.processStory = this.processStory.bind(this);
     this.makeScreenshots = this.makeScreenshots.bind(this);
     this.startProcessing = this.startProcessing.bind(this);
-    this.start = this.start.bind(this);    
+    this.start = this.start.bind(this);
 
     if (opts.mode === COMMANDS.UPDATE) {
       console.error("Update mode is not supported yet!");
@@ -104,6 +104,21 @@ export class TestRunner extends EventEmitter {
     // Set channel
     addons.setChannel(channel);
 
+    // Set up channel event listeners
+    channel.addListener(Events.CURRENT_STORY_WAS_SET, (e) => {
+      // TODO: Ideally we should check if the story changed separately for every platform and have a dedicated timeout for each one
+      if (this.currentStory && this.currentStory.state === "IDLE") {
+        if (e.storyId === this.currentStory.id) {
+          this.currentStory = {
+            ...this.currentStory,
+            state: "RENDERED",
+          };
+          this.emitChange(RunnerEvents.RENDERED_STORY, this.currentStory.id);
+          clearTimeout(this.storyChangedTimeoutId);
+        }
+      }
+    });
+
     // Announce channel created
     channel.emit(Events.CHANNEL_CREATED, {
       host: this.settings.host,
@@ -125,7 +140,7 @@ export class TestRunner extends EventEmitter {
     this.storyQueue = [...storyIds];
 
     // Preload all stories
-    this.channel?.emit(Events.PRELOAD_STORIES, storyIds);
+    // channel.emit(Events.PRELOAD_STORIES, storyIds); // TODO: Wasn't working in its previous version, fixed it, but not sure if we need it anymore
 
     // Save channel
     this.channel = channel;
@@ -150,20 +165,14 @@ export class TestRunner extends EventEmitter {
       state: "IDLE",
     };
 
-    // Emit story & force remount
-    // this.channel?.emit(Events.FORCE_REMOUNT, { storyId });
+    // Emit story change & set a timeout to stop the script if it doesn't change
     this.channel?.emit(Events.SET_CURRENT_STORY, { storyId });
-
-    await delay(1000);
-
-    // Ok: all renders finished
-    this.currentStory = {
-      ...this.currentStory,
-      state: "RENDERED",
-    };
-
-    this.emitChange(RunnerEvents.RENDERED_STORY, this.currentStory.id);
-
+    this.storyChangedTimeoutId = setTimeout(() => {
+      die(
+        "🔴 Story not changed after 10s, try reloading the Metro bundle and the Storybook server. (Make sure the Storybook server runs first.)"
+      );
+      process.exit(1);
+    }, 10_000);
   }
 
   private async makeScreenshots() {
@@ -196,13 +205,13 @@ export class TestRunner extends EventEmitter {
                 type: screenshotInfo.dest,
                 platform,
                 name: story.id,
-              }),
+              })
             ),
           {
             delay: 200,
             maxTry: 5,
             until: (isExists) => isExists,
-          },
+          }
         );
       } catch (error) {
         die(`🔴 Screenshot not found => "${story.id}" on ${platform}.`);
@@ -218,7 +227,7 @@ export class TestRunner extends EventEmitter {
 
         if (isFailed && this.settings.exitOnError) {
           die(
-            `🔴 Failed test => "${story.id}" on ${platform}. See diff at ${diff}`,
+            `🔴 Failed test => "${story.id}" on ${platform}. See diff at ${diff}`
           );
           process.exit(1);
         }
