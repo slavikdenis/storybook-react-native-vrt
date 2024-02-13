@@ -36,7 +36,7 @@
     "@storybook/addon-ondevice-controls": "^6.5.7",
     "@storybook/addons": "^6.5.16",
     "@storybook/react": "^6.5.16",
-    "@storybook/react-native": "patch:@storybook/react-native@npm%3A6.5.7#~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch",
+    "@storybook/react-native": "patch:@storybook/react-native@patch%3A@storybook/react-native@npm%253A6.5.7%23~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch%3A%3Aversion=6.5.7&hash=8102a7#~/.yarn/patches/@storybook-react-native-patch-f4727190cb.patch",
     "@storybook/react-native-server": "^6.5.7",
     "@types/react": "^18.2.43",
     "@types/react-test-renderer": "^18.0.0",
