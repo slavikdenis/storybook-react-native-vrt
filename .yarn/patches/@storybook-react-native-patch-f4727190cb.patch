@@ -1,0 +1,26 @@
+diff --git a/dist/index.d.ts b/dist/index.d.ts
+index 7412f412ce63514f32a66dfa616c073db505628e..fa925478bd67030e66d2324740e2132072b24276 100644
+--- a/dist/index.d.ts
++++ b/dist/index.d.ts
+@@ -97,6 +97,7 @@ type DeepPartial<T> = T extends object ? {
+ type Params = {
+     onDeviceUI?: boolean;
+     enableWebsockets?: boolean;
++    onWsConnectionError?: (e: Error) => void;
+     query?: string;
+     host?: string;
+     port?: number;
+diff --git a/dist/index.js b/dist/index.js
+index 367f405c1d2958a4525a7dd2232b7d77b627f79b..b52d50a17863d0817a89606735302737c2698331 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -1381,7 +1381,8 @@ var View10 = class {
+     return (0, import_channel_websocket.default)({
+       url,
+       async: true,
+-      onError: async () => {
++      onError: async (e) => {
++        params.onWsConnectionError?.(e)
+       }
+     });
+   };

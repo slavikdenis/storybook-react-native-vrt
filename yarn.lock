@@ -54,7 +54,7 @@ __metadata:
     "@storybook/addon-ondevice-controls": "npm:^6.5.7"
     "@storybook/addons": "npm:^6.5.16"
     "@storybook/react": "npm:^6.5.16"
-    "@storybook/react-native": "patch:@storybook/react-native@npm%3A6.5.7#~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch"
+    "@storybook/react-native": "patch:@storybook/react-native@patch%3A@storybook/react-native@npm%253A6.5.7%23~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch%3A%3Aversion=6.5.7&hash=8102a7#~/.yarn/patches/@storybook-react-native-patch-f4727190cb.patch"
     "@storybook/react-native-server": "npm:^6.5.7"
     "@types/react": "npm:^18.2.43"
     "@types/react-test-renderer": "npm:^18.0.0"
@@ -85,7 +85,7 @@ __metadata:
     "@storybook/addon-ondevice-controls": "npm:^6.5.7"
     "@storybook/addons": "npm:^6.5.16"
     "@storybook/react": "npm:^6.5.16"
-    "@storybook/react-native": "patch:@storybook/react-native@npm%3A6.5.7#~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch"
+    "@storybook/react-native": "patch:@storybook/react-native@patch%3A@storybook/react-native@npm%253A6.5.7%23~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch%3A%3Aversion=6.5.7&hash=8102a7#~/.yarn/patches/@storybook-react-native-patch-f4727190cb.patch"
     "@storybook/react-native-server": "npm:^6.5.7"
     "@types/react": "npm:~18.2.43"
     expo: "npm:^49.0.21"
@@ -3215,7 +3215,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@local/ui@workspace:packages/ui"
   dependencies:
-    "@storybook/react-native": "patch:@storybook/react-native@npm%3A6.5.7#~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch"
+    "@storybook/react-native": "patch:@storybook/react-native@patch%3A@storybook/react-native@npm%253A6.5.7%23~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch%3A%3Aversion=6.5.7&hash=8102a7#~/.yarn/patches/@storybook-react-native-patch-f4727190cb.patch"
     "@tools/tsconfig": "npm:*"
     "@types/react": "npm:^18.2.43"
     "@types/react-native": "npm:^0.72.8"
@@ -5538,7 +5538,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react-native@patch:@storybook/react-native@npm%3A6.5.7#~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch":
+"@storybook/react-native@patch:@storybook/react-native@npm%3A6.5.7#~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch::version=6.5.7&hash=8102a7":
   version: 6.5.7
   resolution: "@storybook/react-native@patch:@storybook/react-native@npm%3A6.5.7#~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch::version=6.5.7&hash=8102a7"
   dependencies:
@@ -5569,6 +5569,40 @@ __metadata:
     sb-rn-get-stories: bin/get-stories.js
     sb-rn-watcher: bin/watcher.js
   checksum: fc18d646fb47ae88c68a0bc2d34d2b255690a7cb1396b58bb0568746db0aecd06e0e26bab7ad764ac3ae8cb06237a0bb4ec38b3a80ae62f259b77c3eb960a330
+  languageName: node
+  linkType: hard
+
+"@storybook/react-native@patch:@storybook/react-native@patch%3A@storybook/react-native@npm%253A6.5.7%23~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch%3A%3Aversion=6.5.7&hash=8102a7#~/.yarn/patches/@storybook-react-native-patch-f4727190cb.patch":
+  version: 6.5.7
+  resolution: "@storybook/react-native@patch:@storybook/react-native@patch%3A@storybook/react-native@npm%253A6.5.7%23~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch%3A%3Aversion=6.5.7&hash=8102a7#~/.yarn/patches/@storybook-react-native-patch-f4727190cb.patch::version=6.5.7&hash=582d38"
+  dependencies:
+    "@storybook/addons": "npm:^6.5.14"
+    "@storybook/channel-websocket": "npm:^6.5.14"
+    "@storybook/channels": "npm:^6.5.14"
+    "@storybook/client-api": "npm:^6.5.14"
+    "@storybook/client-logger": "npm:^6.5.14"
+    "@storybook/core-client": "npm:^6.5.14"
+    "@storybook/core-events": "npm:^6.5.14"
+    "@storybook/csf": "npm:0.0.2--canary.4566f4d.1"
+    "@storybook/preview-web": "npm:^6.5.14"
+    "@storybook/react-native-theming": "npm:^6.5.7"
+    chokidar: "npm:^3.5.1"
+    commander: "npm:^8.2.0"
+    deepmerge: "npm:^4.3.0"
+    glob: "npm:^7.1.7"
+    jotai: "npm:^2.0.2"
+    prettier: "npm:^2.4.1"
+    react-native-swipe-gestures: "npm:^1.0.5"
+    util: "npm:^0.12.4"
+  peerDependencies:
+    "@react-native-async-storage/async-storage": ">=1"
+    react: "*"
+    react-native: ">=0.57.0"
+    react-native-safe-area-context: "*"
+  bin:
+    sb-rn-get-stories: bin/get-stories.js
+    sb-rn-watcher: bin/watcher.js
+  checksum: 7e01611a5e6adc06e8c6fcae35cffd9fdfcb8f6f53ca9c4c62fbc3483daffbf96d055b6cc8efb5d87a791256928a8bb47e9af1f8e649c2c0ce0ad66aadadf25d
   languageName: node
   linkType: hard
 

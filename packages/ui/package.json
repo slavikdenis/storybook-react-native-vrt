@@ -19,7 +19,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@storybook/react-native": "patch:@storybook/react-native@npm%3A6.5.7#~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch",
+    "@storybook/react-native": "patch:@storybook/react-native@patch%3A@storybook/react-native@npm%253A6.5.7%23~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch%3A%3Aversion=6.5.7&hash=8102a7#~/.yarn/patches/@storybook-react-native-patch-f4727190cb.patch",
     "react": "18.2.0",
     "react-native": "^0.73.0"
   }
