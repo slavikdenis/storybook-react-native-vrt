@@ -5504,7 +5504,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react-native@npm:6.5.7":
+"@storybook/react-native@npm:6.5.7, @storybook/react-native@npm:^6.5.7":
   version: 6.5.7
   resolution: "@storybook/react-native@npm:6.5.7"
   dependencies:
@@ -18783,7 +18783,7 @@ __metadata:
     "@storybook/core-common": "npm:^6.5.16"
     "@storybook/core-events": "npm:^6.5.16"
     "@storybook/csf-tools": "npm:^6.5.16"
-    "@storybook/react-native": "patch:@storybook/react-native@patch%3A@storybook/react-native@npm%253A6.5.7%23~/.yarn/patches/@storybook-react-native-npm-6.5.7-7555f80731.patch%3A%3Aversion=6.5.7&hash=8102a7#~/.yarn/patches/@storybook-react-native-patch-f4727190cb.patch"
+    "@storybook/react-native": "npm:^6.5.7"
     "@tools/eslint-config": "npm:*"
     "@tools/tsconfig": "npm:*"
     "@types/figlet": "npm:^1.5.8"
