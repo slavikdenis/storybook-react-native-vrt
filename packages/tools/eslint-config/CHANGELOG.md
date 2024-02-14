@@ -1,5 +1,11 @@
 # @tools/eslint-config
 
+## 0.0.2
+
+### Patch Changes
+
+- 731dc89: Revert to using WebSocket events to progress stories, add error handling and failsafes to scripts
+
 ## 0.0.1
 
 ### Patch Changes
